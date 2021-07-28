@@ -1,6 +1,8 @@
 <template>
   <div class="player" @click="toggleLyrics">
-    <!-- <div><label id="debug-message">Debug Message Here!</label></div> -->
+    <div v-if="isDev"
+      ><label id="debug-message">Debug Message Here!</label></div
+    >
     <div
       class="progress-bar"
       :class="{
@@ -183,6 +185,10 @@ export default {
   },
   computed: {
     ...mapState(['player', 'settings', 'data']),
+    isDev() {
+      return true;
+      //return process.env.VUE_DEV === 'YES';
+    },
     currentTrack() {
       return this.player.currentTrack;
     },

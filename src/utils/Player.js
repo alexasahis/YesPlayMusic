@@ -238,10 +238,10 @@ export default class {
       document.title = `${this._currentTrack.name} · ${this._currentTrack.ar[0].name} - YesPlayMusic`;
     }
     this.setOutputDevice();
-    this._howler.once('end', () => {
-      //document.getElementById('debug-message').innerText = '_hower.once.end';
-      this._nextTrackCallback();
-    });
+    //this._howler.once('end', () => {
+    //document.getElementById('debug-message').innerText = '_hower.once.end';
+    //this._nextTrackCallback();
+    //});
     // this._howler.once('play', () => {
     //   document.getElementById('debug-message').innerText = '_hower.once.play';
     // });
@@ -513,12 +513,24 @@ export default class {
       });
     }
     this._howler.once('end', () => {
-      //document.getElementById('debug-message').innerText = '_hower.once.end';
+      document.getElementById('debug-message').innerText = '_hower.once.end';
       this._nextTrackCallback();
     });
-    // this._howler.once('play', () => {
-    //   document.getElementById('debug-message').innerText = '_hower.once.play';
-    // });
+    this._howler.once('play', () => {
+      document.getElementById('debug-message').innerText = '_hower.once.play';
+    });
+    this._howler.once('load', () => {
+      document.getElementById('debug-message').innerText = '_hower.once.load';
+    });
+    this._howler.once('pause', () => {
+      document.getElementById('debug-message').innerText = '_hower.once.pause';
+    });
+    this._howler.once('stop', () => {
+      document.getElementById('debug-message').innerText = '_hower.once.stop';
+    });
+    this._howler.once('seek', () => {
+      document.getElementById('debug-message').innerText = '_hower.once.load';
+    });
   }
   playOrPause() {
     if (this._howler?.playing()) {
