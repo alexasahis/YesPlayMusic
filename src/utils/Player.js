@@ -239,7 +239,11 @@ export default class {
     }
     this.setOutputDevice();
     this._howler.once('end', () => {
+      document.getElementById('debug-message').innerText = '_hower.once.end';
       this._nextTrackCallback();
+    });
+    this._howler.once('play', () => {
+      document.getElementById('debug-message').innerText = '_hower.once.play';
     });
   }
   _getAudioSourceFromCache(id) {
