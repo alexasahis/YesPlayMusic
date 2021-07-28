@@ -238,9 +238,9 @@ export default class {
       document.title = `${this._currentTrack.name} · ${this._currentTrack.ar[0].name} - YesPlayMusic`;
     }
     this.setOutputDevice();
-    this._howler.once('end', () => {
-      this._nextTrackCallback();
-    });
+    // this._howler.once('end', () => {
+    //   this._nextTrackCallback();
+    // });
   }
   _getAudioSourceFromCache(id) {
     return getTrackSource(id).then(t => {
