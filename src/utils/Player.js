@@ -496,6 +496,9 @@ export default class {
         duration: ~~(this.currentTrack.dt / 1000),
       });
     }
+    this._howler.once('end', () => {
+      this._nextTrackCallback();
+    });
   }
   playOrPause() {
     if (this._howler?.playing()) {

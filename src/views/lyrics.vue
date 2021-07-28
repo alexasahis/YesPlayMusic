@@ -191,6 +191,22 @@
           <svg-icon icon-class="arrow-down" />
         </button>
       </div>
+      <div
+        class="next-track-button"
+        @click="player.playNextTrack(player.playNextTrack)"
+      >
+        <button>
+          <svg-icon icon-class="next" />
+        </button>
+      </div>
+      <div
+        class="prev-track-button"
+        @click="player.playPrevTrack(player.playPrevTrack)"
+      >
+        <button>
+          <svg-icon icon-class="previous" />
+        </button>
+      </div>
     </div>
   </transition>
 </template>
@@ -359,8 +375,8 @@ export default {
       }, 50);
     },
     formatLine(line) {
-      const showLyricsTranslation = this.$store.state.settings
-        .showLyricsTranslation;
+      const showLyricsTranslation =
+        this.$store.state.settings.showLyricsTranslation;
       if (showLyricsTranslation && line.contents[1]) {
         return `<span>${line.contents[0]}<br/>${line.contents[1]}</span>`;
       } else if (line.contents[0] !== undefined) {
@@ -664,6 +680,62 @@ export default {
 .close-button {
   position: fixed;
   top: 24px;
+  right: 24px;
+  z-index: 300;
+  border-radius: 0.75rem;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.28;
+  transition: 0.2s;
+  -webkit-app-region: no-drag;
+
+  .svg-icon {
+    color: var(--color-text);
+    padding-top: 5px;
+    height: 22px;
+    width: 22px;
+  }
+
+  &:hover {
+    background: var(--color-secondary-bg-for-transparent);
+    opacity: 0.88;
+  }
+}
+
+.next-track-button {
+  position: fixed;
+  top: 74px;
+  right: 24px;
+  z-index: 300;
+  border-radius: 0.75rem;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.28;
+  transition: 0.2s;
+  -webkit-app-region: no-drag;
+
+  .svg-icon {
+    color: var(--color-text);
+    padding-top: 5px;
+    height: 22px;
+    width: 22px;
+  }
+
+  &:hover {
+    background: var(--color-secondary-bg-for-transparent);
+    opacity: 0.88;
+  }
+}
+
+.prev-track-button {
+  position: fixed;
+  top: 124px;
   right: 24px;
   z-index: 300;
   border-radius: 0.75rem;

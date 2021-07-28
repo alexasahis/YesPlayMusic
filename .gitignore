@@ -28,3 +28,5 @@ pnpm-debug.log*
 /dist_electron
 NeteaseCloudMusicApi-master
 NeteaseCloudMusicApi-master.zip
+
+package-lock.json
