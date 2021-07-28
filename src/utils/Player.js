@@ -239,12 +239,12 @@ export default class {
     }
     this.setOutputDevice();
     this._howler.once('end', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.end';
+      //document.getElementById('debug-message').innerText = '_hower.once.end';
       this._nextTrackCallback();
     });
-    this._howler.once('play', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.play';
-    });
+    // this._howler.once('play', () => {
+    //   document.getElementById('debug-message').innerText = '_hower.once.play';
+    // });
   }
   _getAudioSourceFromCache(id) {
     return getTrackSource(id).then(t => {
@@ -512,6 +512,13 @@ export default class {
         duration: ~~(this.currentTrack.dt / 1000),
       });
     }
+    this._howler.once('end', () => {
+      //document.getElementById('debug-message').innerText = '_hower.once.end';
+      this._nextTrackCallback();
+    });
+    // this._howler.once('play', () => {
+    //   document.getElementById('debug-message').innerText = '_hower.once.play';
+    // });
   }
   playOrPause() {
     if (this._howler?.playing()) {
