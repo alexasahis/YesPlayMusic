@@ -5,7 +5,7 @@
   "description": "A third party music player for Netease Music",
   "author": "hawtim<hawtimzhang@gmail.com>",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "electron:build": "vue-cli-service electron:build -p never",
@@ -13,6 +13,7 @@
     "electron:build-mac": "vue-cli-service electron:build -p never -m",
     "electron:build-win": "vue-cli-service electron:build -p never -w",
     "electron:build-linux": "vue-cli-service electron:build -p never -l",
+    "start:electron": "vue-cli-service electron:serve",
     "electron:serve": "vue-cli-service electron:serve",
     "electron:buildicon": "electron-icon-builder --input=./build/icons/icon.png --output=build --flatten",
     "electron:publish": "vue-cli-service electron:build -mwl -p always",
