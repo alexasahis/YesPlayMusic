@@ -1,5 +1,6 @@
 <template>
   <div class="player" @click="toggleLyrics">
+    <!-- <div><label id="debug-message">Debug Message Here!</label></div> -->
     <div
       class="progress-bar"
       :class="{

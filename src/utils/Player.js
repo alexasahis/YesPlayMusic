@@ -238,9 +238,12 @@ export default class {
       document.title = `${this._currentTrack.name} · ${this._currentTrack.ar[0].name} - YesPlayMusic`;
     }
     this.setOutputDevice();
-    // this._howler.once('end', () => {
-    //   this._nextTrackCallback();
-    // });
+    //document.getElementById('debug-message').innerText = navigator.platform;
+    if (navigator.platform.indexOf('iPhone') == -1) {
+      this._howler.once('end', () => {
+        this._nextTrackCallback();
+      });
+    }
   }
   _getAudioSourceFromCache(id) {
     return getTrackSource(id).then(t => {
@@ -483,6 +486,12 @@ export default class {
   }
   play() {
     if (this._howler?.playing()) return;
+    //document.getElementById('debug-message').innerText = navigator.platform;
+    if (navigator.platform === 'iPhone') {
+      this._howler.once('end', () => {
+        this._nextTrackCallback();
+      });
+    }
     this._howler?.play();
     this._playing = true;
     document.title = `${this._currentTrack.name} · ${this._currentTrack.ar[0].name} - YesPlayMusic`;
@@ -496,9 +505,6 @@ export default class {
         duration: ~~(this.currentTrack.dt / 1000),
       });
     }
-    this._howler.once('end', () => {
-      this._nextTrackCallback();
-    });
   }
   playOrPause() {
     if (this._howler?.playing()) {
