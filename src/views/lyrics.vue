@@ -193,7 +193,7 @@
       </div>
       <div
         class="next-track-button"
-        @click="player.playNextTrackLyrics(player.playNextTrack)"
+        @click="player.playNextTrack4Lyrics(player.playNextTrack)"
       >
         <button>
           <svg-icon icon-class="next" />

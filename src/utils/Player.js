@@ -458,7 +458,7 @@ export default class {
     this._replaceCurrentTrack(trackID);
     return true;
   }
-  playNextTrackLyrics() {
+  playNextTrack4Lyrics() {
     // TODO: 切换歌曲时增加加载中的状态
     const [trackID, index] = this._getNextTrack();
     if (trackID === undefined) {
