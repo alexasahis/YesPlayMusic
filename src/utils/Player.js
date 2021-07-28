@@ -458,6 +458,18 @@ export default class {
     this._replaceCurrentTrack(trackID);
     return true;
   }
+  playNextTrackLyrics() {
+    // TODO: 切换歌曲时增加加载中的状态
+    const [trackID, index] = this._getNextTrack();
+    if (trackID === undefined) {
+      this._howler?.stop();
+      this._playing = false;
+      return false;
+    }
+    this.current = index;
+    this._replaceCurrentTrack(trackID);
+    return true;
+  }
   playPrevTrack() {
     const [trackID, index] = this._getPrevTrack();
     if (trackID === undefined) return false;

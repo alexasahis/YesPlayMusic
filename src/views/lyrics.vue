@@ -191,7 +191,10 @@
           <svg-icon icon-class="arrow-down" />
         </button>
       </div>
-      <div class="next-track-button" @click="player.playNextTrack">
+      <div
+        class="next-track-button"
+        @click="player.playNextTrackLyrics(player.playNextTrack)"
+      >
         <button>
           <svg-icon icon-class="next" />
         </button>
