@@ -238,13 +238,6 @@ export default class {
       document.title = `${this._currentTrack.name} · ${this._currentTrack.ar[0].name} - YesPlayMusic`;
     }
     this.setOutputDevice();
-    //this._howler.once('end', () => {
-    //document.getElementById('debug-message').innerText = '_hower.once.end';
-    //this._nextTrackCallback();
-    //});
-    // this._howler.once('play', () => {
-    //   document.getElementById('debug-message').innerText = '_hower.once.play';
-    // });
   }
   _getAudioSourceFromCache(id) {
     return getTrackSource(id).then(t => {
@@ -462,18 +455,6 @@ export default class {
     this._replaceCurrentTrack(trackID);
     return true;
   }
-  playNextTrack4Lyrics() {
-    // TODO: 切换歌曲时增加加载中的状态
-    const [trackID, index] = this._getNextTrack();
-    if (trackID === undefined) {
-      this._howler?.stop();
-      this._playing = false;
-      return false;
-    }
-    this.current = index;
-    this._replaceCurrentTrack(trackID);
-    return true;
-  }
   playPrevTrack() {
     const [trackID, index] = this._getPrevTrack();
     if (trackID === undefined) return false;
@@ -512,25 +493,6 @@ export default class {
         duration: ~~(this.currentTrack.dt / 1000),
       });
     }
-    this._howler.once('end', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.end';
-      this._nextTrackCallback();
-    });
-    this._howler.once('play', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.play';
-    });
-    this._howler.once('load', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.load';
-    });
-    this._howler.once('pause', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.pause';
-    });
-    this._howler.once('stop', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.stop';
-    });
-    this._howler.once('seek', () => {
-      document.getElementById('debug-message').innerText = '_hower.once.load';
-    });
   }
   playOrPause() {
     if (this._howler?.playing()) {
